@@ -1,6 +1,6 @@
 {
-  "name": "webp",
-  "version": "2.0.0",
+  "name": "marker-plugin-vanilla-es6",
+  "version": "1.0.0",
   "description": "",
   "main": ".#content.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "webpack --progress --colors",
     "deploy": "gh-pages -d build"
   },
-  "author": "",
+  "author": "Carlos Santín",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.1",

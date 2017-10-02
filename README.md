@@ -1,21 +1,18 @@
-# webpack-starter-template
-A starting static site template with webpack, babel, postcss, stylus, pug and lostgrid.
+# marker-plugin-vanilla-es6
+This is a simple demo of a draft plugin using es6. It's still a draft but works!
 
 ##### Fork the project
 ##### Clone the repo to a new directory
-`git clone xxxxx PROJECTNAME`
+`git clone https://github.com/kabala/marker-plugin-vanilla-es6.git`
 
 ##### Create a repo on Github using PROJECTNAME
 ##### Set new origin and push to github
-```
-cd PROJECTNAME
-git remote remove origin
-hub create
-git push -u origin master
-```
+
 
 ##### Install node packages
 `yarn install`
+or
+`npm i`
 
 ##### Build project
 `webpack`
