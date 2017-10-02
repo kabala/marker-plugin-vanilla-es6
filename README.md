@@ -25,4 +25,3 @@ or
 
 ##### Deploy to Github
 `yarn deploy`
-
