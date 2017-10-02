@@ -1,2 +1,8 @@
+import Widget from './js/main'
+
+import data from './js/data.json'
+
 require('./styles/style.styl')
-require('./js/main.js')
+
+
+const widget = new Widget(data)

@@ -1,163 +1,222 @@
+@import './partials/_variables.styl'
+@import './partials/_transitions.styl'
+
+html,
 body
-  height: 100vh
-  display: flex
-  align-items: center
-  justify-content: center
-  
-.wrapper
-  // background: blue
-  display: grid
-  grid-rows: repeat(1fr, 6)
-  grid-columns: repeat(25%, 4)
-  grid-gap: 10px
-  height: 500px
-  width: 350px
-  margin: 0 auto
-  // width: 221
-  border: 0
-  background: #e7a61a
-  border-radius: 4px
-  color: #fff
-  cursor: pointer
-  font: inherit
-  outline: 0
-  padding: 12px 20px
-  transition: all .1s linear
+    width: 100% 
+    height: 100%
+    min-height: 100%
 
+body {
+    background-color: #d4d4d4;
+    padding 0
+    margin 0
+    font-family: 'Ubuntu', sans-serif
+}
 
-.display  
-  grid-area: 1 / 1 / 1 / span 4
-  // height: 50
-  // width: 214
-  font: $font-stack
-  border: 0
-  background: grey
-  border-radius: 4px
-  box-shadow: 2px 5px 3px #575757
-  color: #fff
-  cursor: pointer
-  font: inherit
-  margin: 1 5 6 0
-  outline: 0
-  padding: 12px 20px
-  transition: all .1s linear
-  text-align: right
-
-.regular-key
-  // min-height: 100
-  // min-width: 100
-  // background: white
-  
-.one
-  grid-column: 1
-  grid-row: 5
-  
-.two
-  grid-column: 2
-  grid-row: 5
-  
-.three
-  grid-column: 3
-  grid-row: 5
-
-.four
-  grid-column: 1
-  grid-row: 4
-
-.five
-  grid-column: 2
-  grid-row: 4
-
-.six
-  grid-column: 3
-  grid-row: 4
-
-.seven
-  grid-column: 1
-  grid-row: 3
-
-.eight
-  grid-column: 2
-  grid-row: 3
-
-.nine
-  grid-column: 3
-  grid-row: 3
-
-.zero
-  grid-area: 6 / 1 / 6 / 3
-  
-.clear
-  grid-column: 1
-  grid-row: 2
-  
-.slash
-  grid-column: 2
-  grid-row: 2
-  
-.star
-  grid-column: 3
-  grid-row: 2
-  
-.minus
-  grid-column: 4
-  grid-row: 2
-  
-.plus
-  grid-area: 3 / 4 / 5 / 4   
-
-.enter
-  grid-area: 5 / 4 / 7  /4
-  
-.period
-  grid-column: 3
-  grid-row: 6
-
+a,
 button
-  // height: 50
-  // width: 50
-  border: 0
-  background: #0087cc
-  border-radius: 4px
-  box-shadow: 2px 5px 3px #006599
-  color: #fff
-  cursor: pointer
-  font: inherit
-  // margin: 1 5 6 0
-  outline: 0
-  padding: 12px 20px
-  transition: all .1s linear
+    outline: medium none
 
-button:active, .press
-  box-shadow: 0 2px 0 #006599
-  transform: translateY(3px)
+.main-wrapper
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    height: 100%
+    align-items: center
+    justify-content: center
 
-//- button#zero
-//-   width: 106
+.content
+    position relative
+    max-width: 60rem
+    width: 100%
+    height: auto
 
+// Widget
+.marker-widget
+    border: 2px solid $black
+    color: $text
 
-//- button.tall
-//-   height: 106
+    .big-img
+        width 100%
+        margin 0 auto
 
-//- section
-//-   display: flex
-//-   margin: 0 auto
+    .markers-container
+        z-index: 1
+        position absolute
+        left 0
+        top 0
+        right 0
+        bottom 0
+        display: flex
 
-//- div#one
-//-   flex: 0 0 65%
+        ul.marker-list
+            position: absolute
+            width: 100%
+            height: 100%
+            list-style: none outside none
+            padding 0
+            margin 0
 
-//- div#right
-//-   flex: 1
+        .marker
+            position absolute
+            display: block
 
-//- div.calculator
-//-   margin: 0 auto
-//-   width: 221
-//-   border: 0
-//-   background: #e7a61a
-//-   border-radius: 4px
-//-   color: #fff
-//-   cursor: pointer
-//-   font: inherit
-//-   outline: 0
-//-   padding: 12px 20px
-//-   transition: all .1s linear
+            &:hover
+                .marker-icon
+                    transition: box-shadow .5s ease-in-out
+                    z-index: 5
+                    &:before
+                        opacity: 1
+            &.hovered
+                .marker-tooltip
+                    display: block
+                    animation: show-tooltip .2s ease-in-out
+
+            &.active
+                .marker-icon
+                    background-color $primary
+                    &:before
+                        opacity: 1
+                    &:after
+                        display: none
+                .marker-tooltip
+                    display: none
+                .marker-content
+                    display: block
+            
+            .marker-tooltip
+                border 2px solid $secondary
+                padding: .5em 1rem
+                font-size: 13px
+                background-color: white
+                position: absolute
+                left: 50%
+                bottom: 2.4rem
+                transform: translateX(-50%)
+                z-index: 1
+                border-radius: 1.6rem
+                box-shadow: 0 0 8px rgba(white, .5)
+                text-align: center
+
+            .marker-content,
+            .marker-tooltip
+                display: none
+
+            .marker-content
+                background-color white
+                border: 4px solid $secondary
+                padding 2rem 2rem 1rem
+                position absolute
+                left 4rem
+                top 50%
+                transform translateY(-50%)
+                width 15rem
+                animation card-slide .3s ease-out
+                box-shadow: 0 0 8px rgba(black, .5)
+                z-index: 50
+                
+                &:before
+                    content: ''
+                    display: block
+                    position: absolute
+                    left: -3rem
+                    top: 50%
+                    transform: translateY(-50%)
+                    width: 3rem
+                    height: 2px
+                    background-image: linear-gradient(to right, $primary, $secondary) 
+                    animation: line-slide .3s ease-out
+
+                .m-title,
+                .m-sub,
+                .m-text
+                    margin-top 0
+                
+                .m-title,
+                .m-sub
+                    color: $primary
+                
+                .m-title
+                    font-size: 20px
+
+                .m-sub
+                    font-size: 1rem
+                    font-weight: normal
+                    padding-bottom: 1.2rem
+                    border-bottom: 1px solid $secondary
+
+                .m-img {
+                    position: absolute
+                    background-size: cover
+                    background-position: center center
+                    background-repeat: no-repeat
+                    right: 2rem
+                    top: 2rem
+                    width 60px
+                    height 60px
+                    background-color: $dark-secondary
+                    border-radius: 50%
+                    overflow: hidden
+                }
+
+                .m-text {
+                    font-size: 14px
+                    overflow-y: auto
+                    line-height: 22px
+                    margin-bottom: 2rem
+                }
+
+            .marker-icon
+                cursor: pointer
+                box-shadow: 0 0 12px rgba(black, .6)
+                width 1.5rem
+                height 1.5rem
+                background-color: $secondary
+                border-radius: 50%
+                z-index: 2
+
+                &:before
+                    content: ''
+                    display: block
+                    position absolute
+                    width 12px
+                    height 12px
+                    top: 50%
+                    left 50%
+                    opacity: 0
+                    transform: translateX(-50%) translateY(-50%) 
+                    background-color: white
+                    border-radius: 50%
+                    transition: opacity .5s ease-in-out
+                    z-index: 3
+
+                &:after
+                    content: ''
+                    display: block
+                    position absolute
+                    width: 0
+                    height: 0
+                    left: 50%
+                    bottom: -5px
+                    transform: translateX(-50%)
+                    border-style: solid
+                    border-width: 7px 6.5px 0 6.5px
+                    border-color: $secondary transparent transparent transparent
+                    z-index: 3
+            
+            .m-close
+                cursor: pointer
+                height: 2rem
+                line-height: 1rem
+                border: 2px solid $dark-secondary
+                background-color: #fff
+                color: $dark-secondary
+                border-radius: 1.4em
+                display: inline-block
+                padding: 0 1.4rem
+                font-size: 15px
+                transition: all .2s ease-in-out
+                &:hover
+                    box-shadow: 0 4px 8px rgba($dark-secondary, .4)
+                    padding: 0 1.6rem

@@ -44,7 +44,8 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      { test: /\.json$/, loader: 'json-loader' },
     ]
   },
   // postcss: function () {
@@ -57,7 +58,7 @@ module.exports = {
       filename: 'index.html',
       // favicon: 'favicon.ico',
       template: path.join(__dirname, '/app/pug/index.pug'),
-      title: 'Page Title'
+      title: 'Demo'
     })
   ]
 }
